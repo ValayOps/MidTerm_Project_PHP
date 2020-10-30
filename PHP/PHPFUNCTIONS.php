@@ -10,12 +10,17 @@ define('FOLDER_IMAGES', 'images/');
 define('FILE_CSS', 'css/style.css');
 
 define('FOLDER_LOGO', FOLDER_IMAGES."logo.png");
-define('FOLDER_CAPTAIN', FOLDER_IMAGES."captain.png");
+define('FOLDER_CAPTAIN', FOLDER_IMAGES."captshirt.jpg");
 define('FOLDER_THOR', FOLDER_IMAGES."thor.png");
 define('FOLDER_SPIDER', FOLDER_IMAGES."spiderman.png");
+define('FOLDER_HULK', FOLDER_IMAGES."hulktshirt.jpg");
+define('FOLDER_PANTHER', FOLDER_IMAGES."panthertshirt.jpg");
+
 define('PAGE_INDEX', 'index.php');
 define('PAGE_PICTURES', 'pictures.php');
 define('PAGE_CONTACT', 'contact-us.php');
+//creating array for the drinks by declaring global variable
+$advertisingDrinks = array(FOLDER_LOGO,FOLDER_HULK,FOLDER_SPIDER);
 
     function createPageHeader($Title){
         
@@ -67,6 +72,8 @@ define('PAGE_CONTACT', 'contact-us.php');
     function displayLogo(){
         echo'<div class="header">';
         echo'<a href="#default" class="logo"><img src="'.FOLDER_LOGO.'"></a>';
+        echo '&nbsp;<a href=""><h1>Avengers Shopping<h1></a>';
+
         
     }
     function displayCopyright(){
@@ -87,6 +94,7 @@ define('PAGE_CONTACT', 'contact-us.php');
         echo '<div style="padding-left:20px">';
         echo '<h1>Avengers Body</h1>';
         echo '<p>Infinity War</p>';
+      
         echo '<p></p>';
         echo '</div>';
     }
