@@ -4,8 +4,8 @@
     
     createPageHeader("Avengers Shopping");
     HomeSection();
-    shuffle($advertisingDrinks);
-    echo '<br><br><img class="advertising" src="'.$advertisingDrinks[0].'">';
+               shuffle($advertisingDrinks); 
+        echo '<br><br><img class="advertising" src="'.$advertisingDrinks[0].'">';
     createPageFooter();
     
    ?>

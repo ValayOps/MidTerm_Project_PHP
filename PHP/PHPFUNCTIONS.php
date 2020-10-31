@@ -11,16 +11,16 @@ define('FILE_CSS', 'css/style.css');
 
 define('FOLDER_LOGO', FOLDER_IMAGES."logo.png");
 define('FOLDER_CAPTAIN', FOLDER_IMAGES."captshirt.jpg");
-define('FOLDER_THOR', FOLDER_IMAGES."thor.png");
-define('FOLDER_SPIDER', FOLDER_IMAGES."spiderman.png");
+define('FOLDER_THOR', FOLDER_IMAGES."thortshirt.jpg");
+define('FOLDER_SPIDER', FOLDER_IMAGES."spidertshirt.jpg");
 define('FOLDER_HULK', FOLDER_IMAGES."hulktshirt.jpg");
 define('FOLDER_PANTHER', FOLDER_IMAGES."panthertshirt.jpg");
 
 define('PAGE_INDEX', 'index.php');
 define('PAGE_PICTURES', 'pictures.php');
-define('PAGE_CONTACT', 'contact-us.php');
+define('PAGE_CONTACT', 'buyer.php');
 //creating array for the drinks by declaring global variable
-$advertisingDrinks = array(FOLDER_LOGO,FOLDER_HULK,FOLDER_SPIDER);
+$advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,FOLDER_PANTHER);
 
     function createPageHeader($Title){
         
@@ -49,7 +49,7 @@ $advertisingDrinks = array(FOLDER_LOGO,FOLDER_HULK,FOLDER_SPIDER);
         <a target="_blank" href="<?php echo FOLDER_THOR ?>">
           <img src="<?php echo FOLDER_THOR ?>" alt="Forest" width="600" height="400">
         </a>
-        <div class="desc">Hammer</div>
+          <div class="desc">Thor Tshirt<br>Price - 100$</div>
       </div>
 
       <div class="gallery">
@@ -94,8 +94,8 @@ $advertisingDrinks = array(FOLDER_LOGO,FOLDER_HULK,FOLDER_SPIDER);
         echo '<div style="padding-left:20px">';
         echo '<h1>Avengers Body</h1>';
         echo '<p>Infinity War</p>';
-      
         echo '<p></p>';
+
         echo '</div>';
     }
-    
+   
