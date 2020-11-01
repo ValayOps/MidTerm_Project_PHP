@@ -23,6 +23,7 @@ $quantityInput="";
 $sendArray=array();
 $sendData=array();
 $fieldInput = 0; 
+$final_data=array();
 define('CHAR_SIZE',10);
 						
 //---------- Data Validation -----------------------------				
@@ -142,11 +143,17 @@ if(isset($_POST['submit'])){
        }
        else{
            array_push($sendArray,$sendData);
-               $jsonfile=json_encode($sendArray);
-    $file=fopen("saved.txt", "a");
-    fwrite($file, json_encode($sendData,true));
-    fclose($file);
-    resetValues();
+         
+               $file=fopen("saved.txt","r+");
+               $current_data= file_get_contents('saved.txt');
+               $array_data= json_decode($current_data,true);
+               $array_data[]=$sendArray;
+             
+           
+               file_put_contents('saved.txt',json_encode($array_data));
+            fclose($file);
+            resetValues();
+           
        }
    
 

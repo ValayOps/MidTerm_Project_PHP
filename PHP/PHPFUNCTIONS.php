@@ -19,7 +19,7 @@ define('FOLDER_PANTHER', FOLDER_IMAGES."panthertshirt.jpg");
 define('PAGE_INDEX', 'index.php');
 define('PAGE_PICTURES', 'pictures.php');
 define('PAGE_BUYER', 'buyer.php');
-define('PAGE_ORDER', 'orders  .php');
+define('PAGE_ORDER', 'orders.php');
 
 //creating array for the drinks by declaring global variable
 $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,FOLDER_PANTHER);
