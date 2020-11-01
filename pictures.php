@@ -7,7 +7,7 @@
  */
 include 'PHP/PHPFUNCTIONS.php';
 
-createPageHeader("Avengers Gallery");
+createPageHeader("Avengers Gallery","");
 gallery();
 createPageFooter();
 

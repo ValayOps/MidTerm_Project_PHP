@@ -20,11 +20,29 @@ define('PAGE_INDEX', 'index.php');
 define('PAGE_PICTURES', 'pictures.php');
 define('PAGE_BUYER', 'buyer.php');
 define('PAGE_ORDER', 'orders.php');
-
+      $CodeError = "";
+$fnameError = "";
+$lnameError="";
+$cityError="";
+$commentsError="";
+$priceError="";
+$quantityError="";					
+$productInput = "";
+$fnameInput = "";
+$lnameInput="";
+$cityInput="";
+$commentInput="";
+$priceInput="";
+$quantityInput="";
+$sendArray=array();
+$sendData=array();
+$fieldInput = 0; 
+$final_data=array();
 //creating array for the drinks by declaring global variable
+
 $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,FOLDER_PANTHER);
 
-    function createPageHeader($Title){
+    function createPageHeader($Title,$change){
         
         ?><html>
             <head>
@@ -32,7 +50,7 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
                 <title><?php echo $Title; ?></title>
                 <link rel="stylesheet" href="<?php echo FILE_CSS?>"   >
             </head>
-            <body>
+            <body class="<?php echo $change;?>">
                 <?php
                 displayLogo();
                 displayNavigationMenu();
@@ -42,24 +60,36 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
        ?> 
         <div class="gallery">
         <a target="_blank" href="<?php echo FOLDER_CAPTAIN ?>">
-          <img src="<?php echo FOLDER_CAPTAIN ?>" alt="Cinque Terre" width="600" height="400">
+          <img src="<?php echo FOLDER_CAPTAIN ?>" alt="captain" width="600" height="400">
         </a>
-        <div class="desc">Captain</div>
+        <div class="desc">Captain Tshirt<br>Price - 400$</div>
       </div>
 
       <div class="gallery">
         <a target="_blank" href="<?php echo FOLDER_THOR ?>">
-          <img src="<?php echo FOLDER_THOR ?>" alt="Forest" width="600" height="400">
+          <img src="<?php echo FOLDER_THOR ?>" alt="thor" width="600" height="400">
         </a>
           <div class="desc">Thor Tshirt<br>Price - 100$</div>
       </div>
 
-      <div class="gallery">
-        <a target="_blank" href="<?php echo FOLDER_SPIDER ?>">
-          <img src="<?php echo FOLDER_SPIDER ?>" alt="Northern Lights" width="600" height="400">
-        </a>
-        <div class="desc">Makdi</div>
-      </div>
+        <div class="gallery">
+          <a target="_blank" href="<?php echo FOLDER_SPIDER ?>">
+            <img src="<?php echo FOLDER_SPIDER ?>" alt="Sipder" width="600" height="400">
+          </a>
+          <div class="desc">Spider Tshirt<br>Price - 200$</div>
+        </div>
+        <div class="gallery">
+          <a target="_blank" href="<?php echo FOLDER_HULK ?>">
+            <img src="<?php echo FOLDER_HULK ?>" alt="Sipder" width="600" height="400">
+          </a>
+          <div class="desc">Hulk Tshirt<br>Price - 150$</div>
+        </div>
+        <div class="gallery">
+          <a target="_blank" href="<?php echo FOLDER_PANTHER ?>">
+            <img src="<?php echo FOLDER_PANTHER ?>" alt="Sipder" width="600" height="400">
+          </a>
+          <div class="desc">Panther Tshirt<br>Price - 200$</div>
+        </div>
 <?php
     }
     function createPageFooter(){
@@ -86,7 +116,7 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
 
         echo '<div class="header-right">';
         echo '&nbsp;<a href="'.PAGE_INDEX.'">HOME</a>';
-        echo '&nbsp;<a href="'.PAGE_PICTURES.'">PICTURES</a>';
+        echo '&nbsp;<a href="'.PAGE_PICTURES.'">SHOPPING</a>';
         echo '&nbsp;<a href="'.PAGE_BUYER.'">BUYER</a>';
         echo '&nbsp;<a href="'.PAGE_ORDER.'">ORDER</a>';
         echo '</div>';
@@ -95,10 +125,8 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
         
     function HomeSection(){
         echo '<div style="padding-left:20px">';
-        echo '<h1>Avengers Body</h1>';
-        echo '<p>Infinity War</p>';
+        echo '<h1>Avengers Shopping provides wide range of avengers tshirt</h1>';
         echo '<p></p>';
-
         echo '</div>';
     }
-   
+ 

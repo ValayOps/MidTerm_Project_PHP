@@ -4,26 +4,9 @@
 
 include 'PHP/PHPFUNCTIONS.php';
 
-createPageHeader("Book");
+createPageHeader("Book","");
 //---------- Variables -----------------------------------
-$CodeError = "";
-$fnameError = "";
-$lnameError="";
-$cityError="";
-$commentsError="";
-$priceError="";
-$quantityError="";					
-$productInput = "";
-$fnameInput = "";
-$lnameInput="";
-$cityInput="";
-$commentInput="";
-$priceInput="";
-$quantityInput="";
-$sendArray=array();
-$sendData=array();
-$fieldInput = 0; 
-$final_data=array();
+
 define('CHAR_SIZE',10);
 						
 //---------- Data Validation -----------------------------				
@@ -102,7 +85,7 @@ if(isset($_POST['submit'])){
         $commentInput=null;
         }
     else{
-        $commentInput=($_POST["city"]);
+        $commentInput=($_POST["comments"]);
 
     }
     if((($_POST["price"])>0) && (($_POST["price"])<10000)){
@@ -135,6 +118,7 @@ if(isset($_POST['submit'])){
         $quantityInput=null;  
 
     }
+
     $sendData=Array("code"=>$productInput,"fname"=>$fnameInput,"lname"=>$lnameInput,"city"=>$cityInput,"comments"=>$commentInput,"price"=>$priceInput,"quantity"=>$quantityInput);
   
        if(in_array(null,$sendData)){
@@ -152,7 +136,6 @@ if(isset($_POST['submit'])){
            
                file_put_contents('saved.txt',json_encode($array_data));
             fclose($file);
-            resetValues();
            
        }
    
@@ -210,16 +193,6 @@ Quantity :
 </div>
 
 <?php
-function resetValues(){
-    
-    $productInput="";
-    $fnameInput="";
-    $lnameInput="";
-    $cityInput="";
-    $commentInput="";
-    $priceInput="";
-    $quantityInput="";
-    
-}
+
 createPageFooter();
 ?>

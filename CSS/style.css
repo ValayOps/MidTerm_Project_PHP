@@ -9,7 +9,9 @@ and open the template in the editor.
 */
 
 * {box-sizing: border-box;}
-
+.change{
+    background-color: grey;
+}
 body{
     background-color: grey;
       margin: 0;
@@ -108,3 +110,14 @@ div.desc {
     width: 300px;
     margin-left: 575px;
 }
+
+  .pop{
+    border:10px solid red;
+  width:500px ;
+  height:500px;
+  position:relative;
+  right: -65px;
+  top: 200px ;
+  background-color:red;
+
+  }
