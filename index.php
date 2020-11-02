@@ -10,8 +10,8 @@
   shuffle($advertisingTshirts);
         echo'<div>';
         #displaying random image
-              echo '<img class="pop" src="'.FOLDER_CAPTAIN.'">';
-        echo '<img class="advertising" src="'.$advertisingTshirts[0].'"><br><br>';
+              echo '<a href="https://www.newegg.ca/"><img class="pop" src="'.FOLDER_CAPTAIN.'"></a>';
+        echo '<a href="https://www.newegg.ca/"><img class="advertising" src="'.$advertisingTshirts[0].'"></a><br><br>';
         echo'</div>';
     #displaying page footer
         createPageFooter();
