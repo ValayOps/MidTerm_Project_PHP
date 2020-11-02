@@ -111,13 +111,49 @@ div.desc {
     margin-left: 575px;
 }
 
-  .pop{
+.pop{
     border:10px solid red;
-  width:500px ;
-  height:500px;
+  width:450px ;
+  height:450px;
   position:relative;
   right: -65px;
   top: 200px ;
   background-color:red;
 
   }
+  
+.table{
+     text-align: center;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+input ,strong{
+  display: inline-block;
+  float: left;
+  size:12;
+  font-size:13pt;
+  font-weight:bold;
+}
+input[type=submit]{
+    margin-left: 140px;
+    font-size:16pt;
+    font-weight:bold;
+    float:center; 
+    color:black;
+}
+input[type=reset]{
+    margin-left: 150px;
+     font-size:16pt;
+    font-weight:bold;
+    float:center; 
+    color:black;
+}
+strong{
+    color:red;
+}

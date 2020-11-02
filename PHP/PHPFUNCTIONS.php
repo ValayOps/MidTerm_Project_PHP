@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+//creating array for the drinks by declaring global variable
 define('FOLDER_IMAGES', 'images/');
 define('FILE_CSS', 'css/style.css');
 
@@ -20,7 +20,8 @@ define('PAGE_INDEX', 'index.php');
 define('PAGE_PICTURES', 'pictures.php');
 define('PAGE_BUYER', 'buyer.php');
 define('PAGE_ORDER', 'orders.php');
-      $CodeError = "";
+
+$CodeError = "";
 $fnameError = "";
 $lnameError="";
 $cityError="";
@@ -39,9 +40,8 @@ $sendData=array();
 $fieldInput = 0; 
 $final_data=array();
 //creating array for the drinks by declaring global variable
-
-$advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,FOLDER_PANTHER);
-
+$advertisingTshirts = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,FOLDER_PANTHER);
+#creating header functions
     function createPageHeader($Title,$change){
         
         ?><html>
@@ -52,10 +52,13 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
             </head>
             <body class="<?php echo $change;?>">
                 <?php
+                #calling logo method for displaying logo with text
                 displayLogo();
+                 #callin navigation menu for the menu
                 displayNavigationMenu();
                 
     }
+    #creating  functions for the shopping page(catlog)
     function gallery(){
        ?> 
         <div class="gallery">
@@ -92,6 +95,7 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
         </div>
 <?php
     }
+    #creating page footer for the footer data
     function createPageFooter(){
        ?>
                 <div class="footer">
@@ -101,6 +105,7 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
         </html>
         <?php
     }
+    #creating logo with title
     function displayLogo(){
         echo'<div class="header">';
         echo'<a href="#default" class="logo"><img src="'.FOLDER_LOGO.'"></a>';
@@ -108,9 +113,11 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
 
         
     }
+    #create display copy right function
     function displayCopyright(){
-        echo'<br><br><div id="copyright"><h3>&copy; Valay'.date("Y").'</h3></div>';
+        echo'<br><br><div id="copyright"><h3>&copy; Valay Shah Web Project -'.date("Y").'</h3></div>';
     }
+    #creating navigation
     function displayNavigationMenu(){
                         
 
@@ -122,11 +129,29 @@ $advertisingDrinks = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK,
         echo '</div>';
         echo '</div>';
         }
-        
+   #creating Home function      
     function HomeSection(){
-        echo '<div style="padding-left:20px">';
+        echo '<div>';
         echo '<h1>Avengers Shopping provides wide range of avengers tshirt</h1>';
-        echo '<p></p>';
         echo '</div>';
     }
- 
+       #creating table th headers functioon for further refrence
+ function table_header(){
+            echo'<h3>Order Summary</h3>';
+           echo "<table border='1'>";
+        echo "<tr> <th> Product-Code </th>";
+        echo "<th>First-name</th>";
+        echo "<th>Last-name</th>";
+        echo "<th>City</th>";
+        echo "<th>Comments</th>";
+        echo "<th>Price</th>";
+        echo "<th>Quantity</th>";
+        echo "<th>Subtotal</th>";
+         echo "<th>Taxes</th>";
+         echo "<th>Grand-total</th>";
+ }
+        #creating table end
+ function table_footer(){
+     
+     echo '</table>';
+ }

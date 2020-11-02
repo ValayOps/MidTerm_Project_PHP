@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 include 'PHP/PHPFUNCTIONS.php';
-
+#calling the image catlog
 createPageHeader("Avengers Gallery","");
 gallery();
 createPageFooter();
