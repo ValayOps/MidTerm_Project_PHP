@@ -1,0 +1,106 @@
+php comments
+#,//
+
+
+$users = array('admin' => 'mypass', 'guest' => 'guest');
+
+// This is valid, but should be avoided:
+// PHP may one day provide a magical constant
+// that will break your script
+define("__FOO__", "something"); 
+
+
+error_reporting();
+
+
+function numz  ()
+{
+    return 5;
+}
+
+<?php
+$first ? $second : $third
+?>
+
+
+$f = double($d++);  /* assign twice the value of $d before
+                       the increment, 2*6 = 12 to $f */
+$g = double(++$e);  /* assign twice the value of $e after
+                       the increment, 2*7 = 14 to $g */
+$h = $g += 10;      /* first, $g is incremented by 10 and ends with the 
+                       value of 24. the value of the assignment (24) is 
+                       then assigned into $h, and $h ends with the value 
+                       of 24 as well. */
+
+|| has got a higher priority than and, but less than &&
+
+
+    + = Union
+    == = Equality
+    === = Identity
+    != = Inequality
+    <> = Inequality
+    !== =    Non-identity
+
+
+array_key_exists() returns TRUE if the given key is set in the array. key can be any value possible for an array index.
+
+ysql_real_escape_string, htmlentities(), htmlspecialchars(), strip_tags() and addslashes()------injection protection
+
+return value === undefined || value === null;
+
+while($x <= 5) {
+  echo "The number is: $x <br>";
+  $x++;
+}
+
+
+do {
+  echo "The number is: $x <br>";
+  $x++;
+} while ($x <= 5);
+
+for ($x = 0; $x <= 10; $x++) {
+  echo "The number is: $x <br>";
+}
+
+foreach ($colors as $value) {
+  echo "$value <br>";
+}
+
+
+foreach($age as $x => $val) {
+  echo "$x = $val<br>";
+}
+
+
+$key => $value
+
+
+echo preg_match($pattern, $str);
+
+
+$cars = array (
+  array("Volvo",22,18),
+  array("BMW",15,13),
+  array("Saab",5,2),
+  array("Land Rover",17,15)
+);
+
+The $_SERVER["PHP_SELF"] is a super global variable that returns the filename of the currently executing script.
+
+Notice that at the start of the script, we check whether the form has been submitted using $_SERVER["REQUEST_METHOD"]. If the REQUEST_METHOD is POST, then the form has been submitted - and it should be validated. If it has not been submitted, skip the validation and display a blank form.
+
+
+The htmlspecialchars() function converts special characters to HTML entities. This means that it will replace HTML characters like < and > with &lt; and &gt;. This prevents attackers from exploiting the code by injecting HTML or Javascript code (Cross-site Scripting attacks) in forms.
+
+
+if (empty($_POST["gender"]))
+
+if (isset($gender) )
+
+
+$myfile = fopen("ab.txt", "r") or die("Unable to open file!");
+fread($myfile,filesize("ab.txt"));
+$myfile = fopen("webdictionary.txt", "r");
+fclose($myfile);
