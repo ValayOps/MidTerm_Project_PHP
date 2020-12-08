@@ -1,3 +1,16 @@
+3 ways to connect
+
+PDO(PHP data objects)recommended,error handling,12 database
+
+MYSQLi(Object oriented)
+
+MySQLi(procedural)
+
+
+
+
+
+
 php comments
 #,//
 

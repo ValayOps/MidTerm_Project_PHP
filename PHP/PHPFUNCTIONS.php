@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 //creating array for the drinks by declaring global variable
+
 define('FOLDER_IMAGES', 'images/');
 define('FILE_CSS', 'css/style.css');
 
@@ -16,10 +17,13 @@ define('FOLDER_SPIDER', FOLDER_IMAGES."spidertshirt.jpg");
 define('FOLDER_HULK', FOLDER_IMAGES."hulktshirt.jpg");
 define('FOLDER_PANTHER', FOLDER_IMAGES."panthertshirt.jpg");
 
-define('PAGE_INDEX', 'index.php');
+define('PAGE_INDEX', 'Home.php');
+define('INDEX', 'index.php');
 define('PAGE_PICTURES', 'pictures.php');
 define('PAGE_BUYER', 'buyer.php');
 define('PAGE_ORDER', 'orders.php');
+define('LOGIN', 'login.php');
+
 
 $CodeError = "";
 $fnameError = "";
@@ -49,14 +53,12 @@ $advertisingTshirts = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK
              <meta charset=\"UTF-8\">
                 <title><?php echo $Title; ?></title>
                 <link rel="stylesheet" href="<?php echo FILE_CSS?>"   >
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    
             </head>
             <body class="<?php echo $change;?>">
                 <?php
-                #calling logo method for displaying logo with text
-                displayLogo();
-                 #callin navigation menu for the menu
-                displayNavigationMenu();
-                
+
     }
     #creating  functions for the shopping page(catlog)
     function gallery(){
@@ -98,9 +100,9 @@ $advertisingTshirts = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK
     #creating page footer for the footer data
     function createPageFooter(){
        ?>
-                <div class="footer">
+          
                     <?php displayCopyright()?>
-                </div>
+          
             </body>
         </html>
         <?php
@@ -115,18 +117,21 @@ $advertisingTshirts = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK
     }
     #create display copy right function
     function displayCopyright(){
-        echo'<br><br><div id="copyright"><h3>&copy; Valay Shah Web Project -'.date("Y").'</h3></div>';
+        echo'<br><br><div class="footer"><h3>&copy; Valay Shah Web Project HEY-'.date("Y").'</h3>';
+   
     }
     #creating navigation
     function displayNavigationMenu(){
-                        
 
+             
+        
         echo '<div class="header-right">';
         echo '&nbsp;<a href="'.PAGE_INDEX.'">HOME</a>';
         echo '&nbsp;<a href="'.PAGE_PICTURES.'">SHOPPING</a>';
         echo '&nbsp;<a href="'.PAGE_BUYER.'">BUYER</a>';
         echo '&nbsp;<a href="'.PAGE_ORDER.'">ORDER</a>';
         echo '</div>';
+        
         echo '</div>';
         }
    #creating Home function      
@@ -155,3 +160,13 @@ $advertisingTshirts = array(FOLDER_CAPTAIN,FOLDER_THOR,FOLDER_SPIDER,FOLDER_HULK
      
      echo '</table>';
  }
+     function displayNavigationMenuWithout(){
+                        
+
+        echo '<div class="header-right">';
+        
+        echo '&nbsp;<a href="'.INDEX.'">HOME</a>';
+        echo '&nbsp;<a href="'.LOGIN.'">Login</a>';
+        echo '</div>';
+        echo '</div>';
+        }

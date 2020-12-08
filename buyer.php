@@ -1,10 +1,12 @@
 
 
 <?php
-
+session_start();
 include 'PHP/PHPFUNCTIONS.php';
 #**************************Calling Header Section*********************************
 
+if($_SESSION['loggedin']){
+    
 createPageHeader("Avengers Shopping","");
 
 #************************Declaring size variables***********************************
@@ -214,8 +216,6 @@ if(isset($_POST['submit'])){
         <input name='reset' type='reset' value='Reset'> 	<br><br>
         <input  type="submit" name="submit" value='Submit'> 	
 					
-
-
 </form>
     <br>
     <br>
@@ -227,4 +227,9 @@ if(isset($_POST['submit'])){
 <?php
 #**************************Calling Footer Section*********************************
 createPageFooter();
+}
+else{
+     header('location: login.php');
+        echo'loda le index me';
+}
 ?>
