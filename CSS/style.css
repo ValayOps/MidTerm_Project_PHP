@@ -160,3 +160,7 @@ input[type=reset]{
 strong{
     color:red;
 }
+.tbsp table,th,td{
+      border: 1px solid black;
+
+}

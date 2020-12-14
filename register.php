@@ -1,118 +1,128 @@
 
 
 <?php
-
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: index.php");
-    exit;
-}
-
-
-// Include config file
-//require_once "database-connection.php";
-
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
 include 'PHP/PHPFUNCTIONS.php';
-createPageHeader("Avengers Shopping","");
+include 'Objects/customer.php';
+
+createPageHeader("Avengers Register","");
+displayLogo();
+displayNavigationMenuWithout();
+HomeSection();
+// Check if the user is already logged in, if yes then redirect him to welcome 
+// 
+$fnameError = "";
+$lnameError = "";
+$cityError = "";
+$provinceError = "";
+$usernameError = "";
+$passwordError = "";
+$postalCodeError="";
+$addressError="";
+
+$fnameData = "";
+$lnameData = "";
+$cityData = "";
+$provinceData = "";
+$usernameData = "";
+$passwordData = "";
+$postalCodeData="";
+$addressData="";
+$Signup="";
 #**************************Calling Header Section3*********************************
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Check if username is empty
-    if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter username.";
-    } else {
-        $username = trim($_POST["username"]);
+if (isset($_POST['submit'])){
+    
+       $customer= new customer();
+       
+    $fnameData = htmlspecialchars($_POST["fname"]);
+    $lnameData = htmlspecialchars($_POST["lname"]);
+    $cityData = htmlspecialchars($_POST["city"]);
+    $provinceData = htmlspecialchars($_POST["province"]);
+    $usernameData = htmlspecialchars($_POST["username"]);
+    $passwordData = htmlspecialchars($_POST["password"]);
+    $postalCodeData= htmlspecialchars($_POST["postalcode"]);
+    $addressData= htmlspecialchars($_POST["address"]);
+    
+    $fnameError = $customer->setFirstname($fnameData);
+    $usernameError=$customer->setUsername($usernameData);
+    $lnameError= $customer->setLastname($lnameData);
+    $passwordError= $customer->setPassword($passwordData);
+    $cityError= $customer->setCity($cityData);
+    $addressError = $customer->setAddress($addressData);
+    $provinceError= $customer->setprovince($provinceData);
+    $postalCodeError = $customer->setPostalcode($postalCodeData);
+    
+    if ( $fnameError == " " && $lnameError == " " && $addressError == " " && $cityError == " " && $provinceError == " " && $postalCodeError == " " && $usernameError == " " && $passwordError == " ") {
+        $Signup=$customer->save();
     }
-
-    // Check if password is empty
-    if (empty(trim($_POST["password"]))) {
-        $password_err = "Please enter your password.";
-    } else {
-        $password = trim($_POST["password"]);
-    }
-
-    // Validate credentials
-    if (empty($username_err) && empty($password_err)) {
-        // Prepare a select statement
-        $sql = "SELECT customer_id, name, password FROM customers WHERE name = ?";
-
-        if ($stmt = mysqli_prepare($link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            // Set parameters
-            $param_username = $username;
-
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Store result
-                mysqli_stmt_store_result($stmt);
-
-                // Check if username exists, if yes then verify password
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if (mysqli_stmt_fetch($stmt)) {
-                        if (password_verify($password, $hashed_password)) {
-                            // Password is correct, so start a new session
-                            session_start();
-
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;
-
-                            // Redirect user to welcome page
-                            header("location: welcome.php");
-                        } else {
-                            // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
-                        }
-                    }
-                } else {
-                    // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
-                }
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-    // Close connection
-    mysqli_close($link);
+    
 }
-
-
+    
+ 
 ?>    
 <br>  
 
-        <div class="wrapper">
-            <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                    <span class="help-block"><?php echo $username_err; ?></span>
-                </div>    
-                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control">
-                    <span class="help-block"><?php echo $password_err; ?></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login">
-                </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-            </form>
-        </div>  
+     <div>
+<form method="POST">	
+<br>
+<table>
+
+    <tr>
+    <td>First name :</td>
+    <td><input type='text' name='fname' value="" size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $fnameError; ?></font></strong></td>
+    </tr>
+
+    <tr>
+    <td>Last name :</td>
+    <td><input type='text' name='lname' value="" size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $lnameError; ?></font></strong></td>
+    </tr>
+
+    <tr>
+    <td>Address : </td>
+    <td><input type="text" name='address' value=""  size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $addressError; ?> </font></strong></td>
+    </tr>
+    
+    <tr>
+    <td>City :</td>
+    <td><input type='text' name='city' value="" size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $cityError; ?></font></strong></td>
+   </tr>
+
+   <tr>
+        <td>Province : </td>
+    <td><input type="text" name='province' value=""  size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $provinceError; ?> </font></strong></td>
+    </tr>
+   
+   <tr>
+        <td>Postal code : </td>
+    <td><input type="text" name='postalcode' value=""  size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $postalCodeError; ?> </font></strong></td>
+    </tr>
+   
+    <tr>
+   <td> Username :</td>
+    <td><input type='text' name='username' value="" size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $usernameError; ?></font></strong></td>
+   </tr>
+
+   
+   <tr>
+   <td> Password :</td>
+    <td><input type='password' name='password' value="" size="12" style="font-size:13pt;font-weight:bold;"> </td>
+    <td><strong><font color=#CC0000>*<?php echo $passwordError; ?></font></strong></td>
+   </tr>
+<tr>
+<td><input  type="submit" name="submit" value='Submit' style="font-size:16pt;font-weight:bold;float:center; color:black;" > </td>	
+
+<td><input  type="reset" name="Reset" value='Reset' style="font-size:16pt;font-weight:bold;float:center; color:black;" > </td>
+</tr>		
+  <a href="cheat_sheet.txt" download>Download File cheat sheet</a>
+  <strong><font color=#CC0000>*<?php echo $Signup; ?></font></strong>
+</table>
+    </form> 
 </div>
 
 <?php
