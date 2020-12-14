@@ -20,7 +20,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     displayNavigationMenu();
     loginClass::getFooterName();
     HomeSection();
-#making the instance of the purchase and product to acccess the records
+    #making the instance of the purchase and product to acccess the records
     $purchase = new purchase();
     $product = new product();
 
@@ -45,7 +45,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $commentData = htmlspecialchars($_POST['comment']);
 
         $quantityErrorMessage = $purchase->setQuantity($quantityData);
-#checking if any quantity is not null if not null performing all the logic
+        #checking if any quantity is not null if not null performing all the logic
      
         if ($quantityErrorMessage == " ") {
             #loading the product load method for the price
@@ -64,7 +64,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $purchase->setSubtotal($subTotal);
             $purchase->setTaxes($taxesAmount);
             $purchase->setGrandtotal($grandTotal);
-            $purchase->setCustomeruuid($_SESSION['loggedUser']);
+            $purchase->setCustomeruuid($primarykey);
             $bull = $purchase->save();
             if ($bull == true) {
                  header('location: purchases.php');

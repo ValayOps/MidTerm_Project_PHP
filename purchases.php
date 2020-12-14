@@ -15,7 +15,6 @@ displayNavigationMenu();
 loginClass::getFooterName();
 HomeSection();
 ?>
-    <!--dynamic label-->
     <form>
         <table>
             <tr>
